@@ -1,0 +1,71 @@
+<template>
+    <lightning-card>
+        <h3 slot="title">
+            <lightning-icon icon-name="standard:product" size="small"></lightning-icon>
+            &nbsp;&nbsp;Adicionar Produtos
+        </h3>
+        <div class="slds-p-horizontal_small" >
+            <lightning-input
+                name="enter-search"
+                label="Digite o tipo do produto ou o nome do produto "
+                type="search"
+                onkeyup={handleKeyUp}
+            ></lightning-input>
+            <!-- <lightning-datatable
+                    key-field="id"
+                    data={products.data}
+                    columns={columns}
+                    onsave={handleSave}>
+            </lightning-datatable> -->
+            <ul if:true={showProduct} class="slds-m-around_medium">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Produto">Produto</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Account Name">Valor de venda</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Accont uName">Quantidade</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Selecionar">Add</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={products.data} for:item="prod">
+                            <tr key={prod.id} class="slds-hint-parent" data-id={prod.id}>
+                                <td data-label="Produto">
+                                    <div class="slds-truncate" title={prod.name}>{prod.name}</div>
+                                </td>
+                                <td data-label="Valor de venda">
+                                    <div class="slds-truncate" title={prod.UnitPrice}>
+                                        <input type="text" value={prod.UnitPrice} required="" class="slds-input" />
+                                    </div>
+                                </td>
+                                <td data-label="Quantidade">
+                                    <div class="slds-truncate" title={prod.quantidade}>
+                                        <input type="text" value={prod.quantidade} required="" class="slds-input" />
+                                    </div>
+                                </td>
+                                <td data-label="Selecionar">
+                                    <div class="slds-truncate" title="">
+                                        <button class="slds-button slds-button_icon" title="Settings" value="1" onclick={handleInsert}>
+                                            <lightning-icon icon-name="utility:add" size="small" title={prod.id}></lightning-icon>
+                                        </button>
+                                        <button class="slds-button slds-button_icon slds-hide" title="as" value="1">
+                                            <lightning-icon icon-name="utility:check" title={prod.id} size="small"></lightning-icon>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </ul>
+        </div>
+    </lightning-card>
+</template>
